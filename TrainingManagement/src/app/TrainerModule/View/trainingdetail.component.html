@@ -1,0 +1,59 @@
+ <div class="row">
+    <article class="col-lg-6 col-md-6 col-sm-12 col-xs-12"   >
+        <h4>Training Details:</h4>
+        <section>
+            <div class="row">
+                <span class="col-lg-4 col-md-4 col-sm-12 col-xs-12" >Training of: </span>
+                <span class="col-lg-8 col-md-8 col-sm-12 col-xs-12">{{training.name}}</span>
+            </div>
+             <div class="row">
+                <span class="col-lg-4 col-md-4 col-sm-12 col-xs-12" >Session From: </span>
+                <span class="col-lg-8 col-md-8 col-sm-12 col-xs-12">{{training.sessionFrom}}</span>
+            </div>
+             <div class="row">
+                <span class="col-lg-4 col-md-4 col-sm-12 col-xs-12" >Session To: </span>
+                <span class="col-lg-8 col-md-8 col-sm-12 col-xs-12">{{training.sessionTo}}</span>
+            </div>
+             <div class="row">
+                <span class="col-lg-4 col-md-4 col-sm-12 col-xs-12" >Trainer: </span>
+                <span class="col-lg-8 col-md-8 col-sm-12 col-xs-12">{{training.trainer.name}}</span>
+            </div>
+            <div class="row">              
+                <textarea class="col-lg-11 col-md-11 col-sm-11 col-xs-11" [(ngModel)]="newScenario"
+                placeholder="Enter new scenario" ></textarea>
+            </div>
+            <div class="row"> 
+                <button (click)="addScenario()">Add Scenario</button>
+            </div>
+            
+        </section>
+    </article>
+    <article class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <h4>Training Scenarios:</h4>
+        <section>
+            <table class="table table-striped" [mfData]="scenarios" #mf="mfDataTable" [mfRowsOnPage]="5">
+                <thead>
+                <tr>
+                    <th>
+                        <mfDefaultSorter by="name">Scenario</mfDefaultSorter>
+                    </th>                       
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let scenario of mf.data">
+                    <td>{{scenario.question}}</td>                      
+                    <td><button (click)="complete(scenario.id)" >Completed</button></td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="4">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[2]"></mfBootstrapPaginator>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </section>
+    </article>
+</div>

@@ -1,0 +1,117 @@
+body, header, section, footer{
+    width: 100%;
+}
+
+.container, .jumbotron{
+    margin: 0;
+    padding: 0;
+}
+
+header.top{
+    background-color: #024906;
+    border-bottom: solid 2px #024906;
+    padding: 10px;
+    color: #FFFFFF;
+}
+
+.logo {    
+   margin:5px;
+}
+
+section{
+  width: auto;
+}
+
+footer.bottom{
+    background-color:#024906;
+    color: #FFFFFF;
+    height: 80px;
+}
+
+br{
+    clear: both;
+}
+
+/*  Menu Style */
+nav.right {
+   height: 100%;   
+}
+
+nav.right > ul{
+    list-style: none;
+}
+
+nav.right > ul > li {
+    width: 100%;
+    padding: 10px;
+    background-color: #1c5818;
+    color: #FFFFFF;
+    margin-top: 5px;
+}
+
+nav.right > ul > li:hover {  
+    background-color: #1b7415;
+       
+}
+
+nav.right > ul > li > a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+/*  Menu Style */
+
+/* Login Style*/
+
+.login{
+  margin-left:35%;
+}
+
+.login>header{
+    width: 98%;
+    padding: 2%;
+    background-color: #daf7dc;
+    border-bottom: 2px solid #024906;
+    font-weight: bold;
+    font-size:16px;
+}
+.login>footer{
+    padding:12px;
+    background-color: #daf7dc;
+    font-size: 12px;
+    width: 98%;
+    padding: 2%;
+}
+
+.login>section{
+   width: 98%;
+   padding: 2%;
+   height: auto;
+}
+
+.top20Space {
+    margin-top: 20px;
+}
+
+.bottom20Space {
+    margin-bottom: 20px;
+}
+
+
+/* Login Style*/
+
+.accordian-head{
+    padding: 12px;
+    background-color: #CCCCCC;
+    color: black;
+    margin-top:0px;     
+}
+
+.accordian{
+    border: 2px solid #CCCCCC;
+    margin-top: 5px;
+}
+
+.accordian section{
+    margin: 10px;
+}

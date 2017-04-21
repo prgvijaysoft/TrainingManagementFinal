@@ -1,0 +1,71 @@
+<article class="accordian">
+    <h4 (click)="accordionDom.toggle()" class="accordian-head">Add New Training</h4>
+    <accordion #accordionDom>
+        <section>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user-circle"></i></span>
+                <input type="text" class="form-control" placeholder="Training Name" [(ngModel)]="name"
+                aria-describedby="basic-addon1">
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user-circle"></i></span>
+                <input type="datetime-local" class="form-control" placeholder="Session From" 
+                [(ngModel)]="sessionFrom" aria-describedby="basic-addon1">
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-lock"></i></span>
+                <input type="datetime-local" class="form-control" placeholder="Session To" 
+                [(ngModel)]="sessionTo" aria-describedby="basic-addon1">
+            </div>                
+            <br />
+            <div class="input-group">  
+                <select style="width:100%;" [(ngModel)]="selectedTrainerId">
+                    <option *ngFor="let  trainer of trainers" value= {{trainer.id}}>
+                        {{trainer.name}}
+                    </option>
+                </select>
+            </div>
+            <br />
+            <div class="btn-group">
+                <button type="button" (click)="addTraining()" class="btn btn-default">Register User</button>
+            </div>
+        </section>
+    </accordion> 
+</article> 
+
+<h3>Trainings</h3>
+<table class="table table-striped" [mfData]="trainings" #mf="mfDataTable" [mfRowsOnPage]="5">
+    <thead>
+    <tr>
+        <th>
+            <mfDefaultSorter by="name">Name</mfDefaultSorter>
+        </th>
+        <th >
+            <mfDefaultSorter by="userName">Session From</mfDefaultSorter>
+        </th>
+        <th >
+            <mfDefaultSorter by="role">Session To</mfDefaultSorter>
+        </th>
+        <th >
+            <mfDefaultSorter by="active">Trainer</mfDefaultSorter>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let training of mf.data">
+        <td>{{training.name}}</td>
+        <td>{{training.sessionFrom | date: "dd-MM-yyyy hh:mm"}}</td>
+        <td>{{training.sessionTo | date: "dd-MM-yyyy hh:mm"}}</td>
+        <td>{{training.trainer.id}}</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">
+         <mfBootstrapPaginator [rowsOnPageSet]="[2]"></mfBootstrapPaginator>
+        </td>
+    </tr>
+    </tfoot>
+</table>

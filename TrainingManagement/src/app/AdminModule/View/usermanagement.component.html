@@ -1,0 +1,124 @@
+
+<article class="accordian">
+    <h4 (click)="accordionDom.toggle()" class="accordian-head">Register New User</h4>
+    <accordion #accordionDom>
+        <section>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user-circle"></i></span>
+                <input type="text" class="form-control" placeholder="Name" [(ngModel)]="name"
+                aria-describedby="basic-addon1">
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user-circle"></i></span>
+                <input type="text" class="form-control" placeholder="Username" [(ngModel)]="userName"
+                aria-describedby="basic-addon1">
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-lock"></i></span>
+                <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password"
+                aria-describedby="basic-addon1">
+            </div>
+                <br />
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-lock"></i></span>
+                <input type="password" class="form-control" placeholder="Confirm Password" [(ngModel)]="confirmPassword"
+                aria-describedby="basic-addon1">
+            </div>
+            <br />
+            <div class="input-group">
+                <input list="userRoles" [(ngModel)]="role" class="form-control">
+
+                <datalist id="userRoles">
+                    <option value="Admin">
+                    <option value="Trainer">
+                    <option value="Trainee">        
+                </datalist>
+            </div>
+            <br />
+            <div class="btn-group">
+                <button type="button" (click)="addUser()" class="btn btn-default">Register User</button>
+            </div>
+        </section>
+    </accordion> 
+</article>
+
+<div *ngIf="editId>0" class="row">
+    <div class="col-lg-12 " style="padding:10px; border: solid 2px #CCCCCC; margin-top: 20px;">
+        <h5>Update detail:</h5>
+        <div class="input-group">
+            <input type="checkbox"  [(ngModel)]="editActive">
+            <span>
+                Active
+            </span>
+        </div><!-- /input-group -->
+        <br />
+        <div class="input-group">
+            <input class="form-control" list="userRoles" [(ngModel)]="editRole">
+
+            <datalist id="userRoles">
+                <option value="Admin">
+                <option value="Trainer">
+                <option value="Trainee">        
+            </datalist>
+        </div>
+        <br />
+        <div class="btn-group">
+            <button type="button" (click)="updateUser()" class="btn btn-default">Update</button>
+        </div>
+    </div>
+</div>
+
+<br> <br>
+<h4>Registered Users</h4>
+
+<table class="table table-striped" [mfData]="users | dataFilter : filterQuery" #mf="mfDataTable" 
+            [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder" >
+    <thead>
+        <tr>
+            <th colspan="5">
+               
+                <input class="form-control" [(ngModel)]="filterQuery" type="text" placeholder="filter by name."/>
+            </th>
+        </tr>   
+        <tr>
+            <th>
+                <mfDefaultSorter by="name">Name</mfDefaultSorter>
+            </th>
+            <th >
+                <mfDefaultSorter by="userName">Username</mfDefaultSorter>
+            </th>
+            <th >
+                <mfDefaultSorter by="role">Role</mfDefaultSorter>
+            </th>
+            <th >
+                <mfDefaultSorter by="active">Status</mfDefaultSorter>
+            </th>
+            <th>Action</th>
+        </tr>
+                    
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of mf.data">
+        <td>{{user.name}}</td>
+        <td>{{user.userName}}</td>
+        <td>{{user.role}}</td>
+        <td>
+            <span *ngIf="user.active">Active</span>
+            <span *ngIf="!user.active">InActive</span>          
+        </td>
+        <td>
+            <button *ngIf="user.active" (click)="edit(user.id)"  >Edit</button>
+           
+        </td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+    </tr>
+    </tfoot>
+</table>

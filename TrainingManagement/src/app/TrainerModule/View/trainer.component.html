@@ -1,0 +1,49 @@
+<div class="container center-block " >
+    <div class="row">        
+        <section class="col-lg-8 col-md-8 col-sm-12 col-xs-12 center-block" style="margin: 0 auto;">
+            <article class="accordian">
+                <h4 (click)="accordionDom.toggle()" class="accordian-head">Active Trainings</h4>
+                <accordion #accordionDom>
+                    <section>
+                        <table class="table table-striped" [mfData]="trainings" #mf="mfDataTable" [mfRowsOnPage]="5">
+                            <thead>
+                            <tr>
+                                <th>
+                                    <mfDefaultSorter by="name">Name</mfDefaultSorter>
+                                </th>
+                                <th >
+                                    <mfDefaultSorter by="sessionFrom">Session From</mfDefaultSorter>
+                                </th>
+                                <th >
+                                    <mfDefaultSorter by="sessionTo">Session To</mfDefaultSorter>
+                                </th>
+                                <th >
+                                   Trainer
+                                </th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let training of mf.data">
+                                <td>{{training.name}}</td>
+                                <td>{{training.sessionFrom | date: "dd-MM-yyyy hh:mm"}}</td>
+                                <td>{{training.sessionTo | date: "dd-MM-yyyy hh:mm"}}</td>
+                                <td>{{training.trainer.id}}</td>
+                                <td><button (click)="detail(training.id)"  >Detail</button></td>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="4">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[2]"></mfBootstrapPaginator>
+                                </td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </section>
+                </accordion> 
+            </article> 
+        </section>
+    </div>
+</div>
+

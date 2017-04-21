@@ -1,0 +1,16 @@
+<div class="container center-block ">
+    <div class="row">
+        <aside class="col-lg-4 col-md-4 col-sm-11 col-xs-11 ">                  
+            <nav class="right">
+                <ul>
+                    <li><a [routerLink]= "['user']">User Management</a></li>
+                    <li><a [routerLink]= "['training']">Training Management</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <section class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <router-outlet></router-outlet>
+        </section>
+    </div>
+</div>
+
