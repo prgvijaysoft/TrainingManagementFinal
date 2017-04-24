@@ -4,9 +4,9 @@
             <div class="col-lg-1 pull-left">
                 <img src="image/Logo.png" class="logo" />
             </div>
-            <div class="col-lg-1 pull-right  " style="width: auto;">
+            <div *ngIf="loggedUserId" class="col-lg-1 pull-right  " style="width: auto; margin-top: 25px;">
                 <label id="lblLoggedUser">Vijay Chauhan</label>
-                <i class="fa fa-caret-down" ></i>
+                <a href="#" (click)="logout()" style="color: #FFFFFF; font-weight: bold; margin-left: 15px;">Logout</a>
             </div>
         </div>
     </div>

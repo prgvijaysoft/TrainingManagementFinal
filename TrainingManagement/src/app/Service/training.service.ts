@@ -37,7 +37,7 @@ export class TrainingService{
     } 
 
     getTraining(id: number): Observable<Training>{
-        return this.http.get(this.baseUrl + 'training?id' + id)
+        return this.http.get(this.baseUrl + 'training?id=' + id)
         .map(response => response.json().data as Training);
     }
 }

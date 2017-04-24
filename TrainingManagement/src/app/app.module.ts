@@ -16,9 +16,6 @@ import { UserManagementComponent } from './AdminModule/Component/usermanagement.
 import { TrainingManagementComponent } from './AdminModule/Component/trainingmanagement.component';
 import { TrainingDetailComponent } from './TrainerModule/Component/trainingdetail.component';
 
-import { UserService } from './service/user.service';
-import { TrainingService } from './service/training.service';
-
 import { DataFilterPipe } from './Pipes/data.filter.pipe';
 
 @NgModule({
@@ -26,7 +23,7 @@ import { DataFilterPipe } from './Pipes/data.filter.pipe';
   declarations: [ AppComponent, LoginComponent, AdminComponent, TrainerComponent, UserManagementComponent,
    TrainingManagementComponent, TrainingDetailComponent, DataFilterPipe
    ],
-  providers:    [ UserService, TrainingService ],
+  
   bootstrap:    [ AppComponent ] 
 })
 export class AppModule {

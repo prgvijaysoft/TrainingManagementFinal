@@ -1,5 +1,5 @@
  <div class="row">
-    <article class="col-lg-6 col-md-6 col-sm-12 col-xs-12"   >
+    <article *ngIf="training" class="col-lg-6 col-md-6 col-sm-12 col-xs-12"   >
         <h4>Training Details:</h4>
         <section>
             <div class="row">
@@ -16,7 +16,7 @@
             </div>
              <div class="row">
                 <span class="col-lg-4 col-md-4 col-sm-12 col-xs-12" >Trainer: </span>
-                <span class="col-lg-8 col-md-8 col-sm-12 col-xs-12">{{training.trainer.name}}</span>
+                <span class="col-lg-8 col-md-8 col-sm-12 col-xs-12"></span>
             </div>
             <div class="row">              
                 <textarea class="col-lg-11 col-md-11 col-sm-11 col-xs-11" [(ngModel)]="newScenario"

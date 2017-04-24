@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../Service/user.service';
 import { Router  } from '@angular/router';
@@ -31,7 +31,7 @@ export class UserManagementComponent implements OnInit  {
 
    users: User[];
 
-   constructor(private userService: UserService, private router: Router) {}
+   constructor(private userService: UserService, private router: Router, private ref:ChangeDetectorRef) {}
 
     ngOnInit(): void {
         this.getUsers();
@@ -65,6 +65,7 @@ export class UserManagementComponent implements OnInit  {
                 if(userList != null) {
                         console.log(userList);
                         this.users = userList;
+                        this.ref.detectChanges();
                 }
             },
             err => console.log(err),

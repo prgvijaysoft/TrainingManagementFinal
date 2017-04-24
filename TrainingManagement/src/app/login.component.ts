@@ -19,7 +19,10 @@ export class LoginComponent  {
         user =>{ 
           if(user != null) {
             console.log(user.role);
-            var route = user.role == 'admin' ? '/admin': user.role == 'trainer' ? '/trainer' : '/login';
+            localStorage.setItem('userId', user.id.toString());
+            localStorage.setItem('role', user.role);
+            localStorage.setItem('name', user.name);
+            var route = user.role.toLowerCase() == 'admin' ? '/admin': user.role.toLowerCase() == 'trainer' ? '/trainer' : '/login';
             console.log(route);
             this.router.navigate([route]);
           }
